@@ -1,0 +1,14 @@
+get_user_info <- function() {
+  name <- readline(prompt = "Enter your name: ")
+  age <- as.numeric(readline(prompt = "Enter your age: "))
+  cat("Name:", name, "\n")
+  cat("Age:", age, "\n")
+}
+
+print_r_version <- function() {
+  r_version <- R.Version()
+  cat("R version:", r_version$version.string, "\n")
+}
+
+get_user_info()
+print_r_version()
