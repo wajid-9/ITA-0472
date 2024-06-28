@@ -1,0 +1,10 @@
+columns <- 4
+rows <- 3
+tables <- 2
+array_data <- array(1:(columns * rows * tables), dim = c(rows, columns, tables))
+cat("Array content:\n")
+print(array_data)
+even_sequence <- seq(from = 52, by = 2, length.out = 5 * 3)
+array_data <- matrix(even_sequence, nrow = 5, ncol = 3, byrow = TRUE)
+cat("\nArray content of even integers greater than 50:\n")
+print(array_data)
