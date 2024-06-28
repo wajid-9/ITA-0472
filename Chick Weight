@@ -1,0 +1,18 @@
+data(ChickWeight)
+ordered_data <- ChickWeight[order(ChickWeight$weight, ChickWeight$diet), ]
+last_6 <- tail(ordered_data, 6)
+cat("(i) Last 6 records ordered by weight within each diet:\n")
+print(last_6)
+library(reshape2)
+melted_data <- melt(ChickWeight, id.vars = c("Chick", "Time", "Diet"))
+cat("\n(ii) (a) Melted data based on Chick, Time, Diet:\n")
+print(head(melted_data))
+mean_weight <- dcast(melted_data, Diet ~ variable, fun.aggregate = mean)
+cat("\n(ii) (b) Mean value of weight grouped by Diet:\n")
+print(mean_weight)
+mode_weight <- dcast(melted_data, Diet ~ variable, fun.aggregate = function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+})
+cat("\n(ii) (c) Mode of weight grouped by Diet:\n")
+print(mode_weight)
