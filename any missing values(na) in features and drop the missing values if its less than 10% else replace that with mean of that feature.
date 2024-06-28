@@ -1,0 +1,16 @@
+data(airquality)
+na_count <- colSums(is.na(airquality))
+for (col in names(airquality)) {
+  if (na_count[col] > 0) {
+    if (na_count[col] / nrow(airquality) < 0.1) {
+      airquality[[col]][is.na(airquality[[col]])] <- mean(airquality[[col]], na.rm = TRUE)
+    } else {
+      airquality <- airquality[complete.cases(airquality), ]
+      cat("Dropped rows with missing values in column:", col, "\n")
+    }
+  }
+}
+model <- lm(Ozone ~ Solar.R, data = airquality)
+plot(airquality$Solar.R, airquality$Ozone, main = "Scatter plot of Ozone vs Solar.R with Regression Line",
+     xlab = "Solar Radiation (Langley)", ylab = "Ozone Concentration (ppb)")
+abline(model, col = "blue")
