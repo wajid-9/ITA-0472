@@ -1,0 +1,20 @@
+data(Titanic)
+Titanic_df <- as.data.frame(Titanic)
+library(ggplot2)
+ggplot(Titanic_df, aes(x = Class, fill = Survived)) +
+  geom_bar(position = "stack", color = "black") +
+  labs(title = "Survival based on Passenger Class",
+       x = "Class",
+       y = "Count",
+       fill = "Survived")
+ggplot(subset(Titanic_df, Survived == "Yes"), aes(x = Class, fill = Gender)) +
+  geom_bar(position = "stack", color = "black") +
+  labs(title = "Survivors by Gender and Class",
+       x = "Class",
+       y = "Count",
+       fill = "Gender")
+ggplot(Titanic_df, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  labs(title = "Distribution of Age on Titanic",
+       x = "Age",
+       y = "Count")
