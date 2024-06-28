@@ -1,0 +1,5 @@
+plot.new()
+title(main = "Empty Plot")
+plot.new()
+plot.window(xlim = c(0, 10), ylim = c(0, 20))
+title(main = "Empty Plot with Axes Limits")
