@@ -1,0 +1,13 @@
+get_memory_details <- function() {
+  memory_details <- ls()
+  objects_info <- sapply(memory_details, function(x) {
+    obj <- get(x)
+    class_name <- class(obj)
+    obj_size <- object.size(obj)
+    list(Class = class_name, Size = obj_size)
+  }, simplify = FALSE)
+  
+  print(objects_info)
+}
+
+get_memory_details()
