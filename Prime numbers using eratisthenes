@@ -1,0 +1,18 @@
+sieve_of_eratosthenes <- function(n) {
+  primes <- rep(TRUE, n)
+  primes[1] <- FALSE
+  p <- 2
+  while (p^2 <= n) {
+    if (primes[p]) {
+      for (i in seq(p^2, n, by = p)) {
+        primes[i] <- FALSE
+      }
+    }
+    p <- p + 1
+  }
+  which(primes)
+}
+
+n <- as.numeric(readline(prompt = "Enter a number: "))
+prime_numbers <- sieve_of_eratosthenes(n)
+cat("Prime numbers up to", n, ":\n", prime_numbers, "\n")
