@@ -1,0 +1,9 @@
+vec1 <- 1:9
+vec2 <- 10:18
+array_data <- array(c(vec1, vec2), dim = c(3, 3, 2))
+print("Array:")
+print(array_data)
+cat("\nSecond row of the second matrix:\n")
+print(array_data[2, , 2])
+cat("\nElement in the 3rd row and 3rd column of the 1st matrix:\n")
+print(array_data[3, 3, 1])
