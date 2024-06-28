@@ -1,0 +1,7 @@
+data(airquality)
+is_data_frame <- is.data.frame(airquality)
+cat("Is 'airquality' a data frame? ", is_data_frame, "\n\n")
+ordered_airquality <- airquality[order(airquality$Month, airquality$Day), ]
+airquality_trimmed <- subset(ordered_airquality, select = -c(Solar.R, Wind))
+cat("Trimmed 'airquality' data frame (without Solar.R and Wind):\n")
+print(airquality_trimmed)
