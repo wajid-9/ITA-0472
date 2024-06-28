@@ -1,0 +1,17 @@
+data(ChickWeight)
+library(ggplot2)
+ggplot(ChickWeight, aes(x = factor(Diet), y = weight, fill = factor(Diet))) +
+  geom_boxplot() +
+  labs(title = "Box plot of weight grouped by Diet",
+       x = "Diet",
+       y = "Weight")
+ggplot(subset(ChickWeight, Diet == 1), aes(x = weight)) +
+  geom_histogram(binwidth = 20, fill = "lightblue", color = "black", aes(y = ..density..)) +
+  labs(title = "Histogram of weight for Diet-1",
+       x = "Weight",
+       y = "Density")
+ggplot(ChickWeight, aes(x = Time, y = weight, color = factor(Diet))) +
+  geom_point() +
+  labs(title = "Scatter plot of weight vs Time grouped by Diet",
+       x = "Time",
+       y = "Weight")
