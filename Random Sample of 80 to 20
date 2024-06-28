@@ -1,0 +1,20 @@
+library(caret
+set.seed(123)
+train_index <- createDataPartition(iris$Species, p = 0.8, list = FALSE)
+train_data <- iris[train_index, ]
+test_data <- iris[-train_index, ]
+model <- glm(Species ~ Petal.Width + Petal.Length, data = train_data, family = "binomial")
+predictions <- predict(model, newdata = test_data, type = "response")
+predicted_classes <- ifelse(predictions > 0.5, "virginica", "not_virginica")
+confusion_matrix <- table(Predicted = predicted_classes, Actual = test_data$Species)
+print("Confusion Matrix:")
+print(confusion_matrix)
+c_values <- c(90, 50, 70, 80, 70, 60, 20, 30, 80, 90, 20)
+cat("\n(i) Mean, Median, Mode of c_values:\n")
+cat("Mean:", mean(c_values), "\n")
+cat("Median:", median(c_values), "\n")
+cat("Mode:", names(sort(-table(c_values)))[1], "\n")
+sorted_unique <- sort(unique(c_values))
+cat("\n(ii) 2nd highest and 3rd lowest value of c_values:\n")
+cat("2nd highest value:", sorted_unique[length(sorted_unique) - 1], "\n")
+cat("3rd lowest value:", sorted_unique[3], "\n")
