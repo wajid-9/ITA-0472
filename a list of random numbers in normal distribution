@@ -1,0 +1,7 @@
+set.seed(123)
+random_numbers <- rnorm(100, mean = 0, sd = 1)
+counts <- table(round(random_numbers, 2))
+
+cat("Random numbers from normal distribution:\n", random_numbers, "\n\n")
+cat("Counts of each unique value:\n")
+print(counts)
